@@ -1,3 +1,7 @@
+<script>
+  const cm2 = 0.028; // MUDE AQUI SE QUISER AJUSTAR O VALOR, NAO PRECISA MEXER EM MAIS NADA
+</script>
+
 <html>
   <style>
     body,
@@ -18,15 +22,14 @@
   </style>
   <body>
     <div>
-      <label for="x">X</label><input id="x" value="1" onkeyup="calc()" />
+      <label for="x">Altura</label><input id="x" value="1" onkeyup="calc()" />
     </div>
     <div>
-      <label for="y">Y</label><input id="y" value="1" onkeyup="calc()" />
+      <label for="y">Largura</label><input id="y" value="1" onkeyup="calc()" />
     </div>
     <div class="result">
-      Resultado:
+      R$
       <span id="result"></span>
-      <span>cm<sup>2</sup></span>
     </div>
     <div>
       <img
@@ -37,34 +40,33 @@
     </div>
   </body>
 </html>
-<script>
-  const cm2 = 0.028; // mude esse valor se quiser outra área
 
+<script>
   document.onload = calc();
 
   function getVal(id) {
     const val = document.getElementById(id).value;
-    return val && parseFloat(val.replace(',', '.'));
+    return val && parseFloat(val.replace(",", "."));
   }
   function calc() {
     // little easter egg...
     if (
       document
-        .getElementById('x')
+        .getElementById("x")
         .value.trim()
-        .toUpperCase() === 'GIBA'
+        .toUpperCase() === "GIBA"
     ) {
-      document.getElementById('img').style.display = '';
+      document.getElementById("img").style.display = "";
       return;
     }
 
     // now the proper stuff
-    document.getElementById('img').style.display = 'none';
-    const x = getVal('x');
-    const y = getVal('y');
+    document.getElementById("img").style.display = "none";
+    const x = getVal("x");
+    const y = getVal("y");
     const result = x * y * cm2;
-    document.getElementById('result').innerText = isNaN(result)
+    document.getElementById("result").innerText = isNaN(result)
       ? 0
-      : result.toFixed(3).replace('.', ',');
+      : result.toFixed(2).replace(".", ",");
   }
 </script>
