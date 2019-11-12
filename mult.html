@@ -1,5 +1,8 @@
 <script>
-  const cm2 = 0.028; // MUDE AQUI SE QUISER AJUSTAR O VALOR, NAO PRECISA MEXER EM MAIS NADA
+  /* 
+  MUDE AQUI SE QUISER AJUSTAR O VALOR, NAO PRECISA MEXER EM MAIS NADA
+  */
+  const valor_unitario_cm2 = 0.028;
 </script>
 
 <html>
@@ -9,6 +12,9 @@
     input {
       font-size: xx-large;
       font-family: monospace;
+    }
+    input {
+      width: 5em;
     }
     div {
       margin: 1em;
@@ -22,7 +28,7 @@
   </style>
   <body>
     <div>
-      <label for="x">Altura</label><input id="x" value="1" onkeyup="calc()" />
+      <label for="x">Altura </label><input id="x" value="1" onkeyup="calc()" />
     </div>
     <div>
       <label for="y">Largura</label><input id="y" value="1" onkeyup="calc()" />
@@ -64,7 +70,7 @@
     document.getElementById("img").style.display = "none";
     const x = getVal("x");
     const y = getVal("y");
-    const result = x * y * cm2;
+    const result = x * y * valor_unitario_cm2;
     document.getElementById("result").innerText = isNaN(result)
       ? 0
       : result.toFixed(2).replace(".", ",");
